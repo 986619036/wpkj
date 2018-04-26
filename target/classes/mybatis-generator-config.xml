@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="prod">
+        <!-- RowBounds pagination -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://127.0.0.1:3306/mysql" userId="root"
+            password="root" />
+
+        <javaModelGenerator targetPackage="com.wpkj.domain"
+            targetProject="src/main/java">
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.wpkj.mysql" targetProject="src/main/java" />
+        <javaClientGenerator targetPackage="com.wpkj.mapper"
+            targetProject="src/main/java" type="XMLMAPPER" />
+
+        <!-- <table tableName="wp_users" domainObjectName="WpUsers"></table>
+        <table tableName="wp_roles" domainObjectName="WpRoles"></table>
+		<table tableName="wp_menus" domainObjectName="WpMenus"></table>
+		<table tableName="wp_roleMenus" domainObjectName="WpRoleMenus"></table>
+        <table tableName="wp_userRole" domainObjectName="WpUserRole"></table> -->
+        <table tableName="user" domainObjectName="User"></table> 
+
+    </context>
+</generatorConfiguration>

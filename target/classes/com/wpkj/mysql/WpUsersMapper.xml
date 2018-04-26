@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wpkj.mapper.WpUsersMapper">
+  <resultMap id="BaseResultMap" type="com.wpkj.domain.WpUsers">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="editTime" jdbcType="VARCHAR" property="edittime" />
+    <result column="delFlag" jdbcType="VARCHAR" property="delflag" />
+    <result column="userCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="passCode" jdbcType="VARCHAR" property="passcode" />
+    <result column="isEanble" jdbcType="VARCHAR" property="iseanble" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, userId, editTime, delFlag, userCode, userName, loginName, passCode, isEanble
+  </sql>
+  <select id="selectByExample" parameterType="com.wpkj.domain.WpUsers" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wp_users
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wp_users
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wpkj.domain.WpUsers">
+    delete from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wpkj.domain.WpUsers">
+    insert into wp_users (id, userId, editTime, 
+      delFlag, userCode, userName, 
+      loginName, passCode, isEanble
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{edittime,jdbcType=VARCHAR}, 
+      #{delflag,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{loginname,jdbcType=VARCHAR}, #{passcode,jdbcType=VARCHAR}, #{iseanble,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wpkj.domain.WpUsers">
+    insert into wp_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="edittime != null">
+        editTime,
+      </if>
+      <if test="delflag != null">
+        delFlag,
+      </if>
+      <if test="usercode != null">
+        userCode,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="passcode != null">
+        passCode,
+      </if>
+      <if test="iseanble != null">
+        isEanble,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="edittime != null">
+        #{edittime,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="passcode != null">
+        #{passcode,jdbcType=VARCHAR},
+      </if>
+      <if test="iseanble != null">
+        #{iseanble,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wpkj.domain.WpUsers" resultType="java.lang.Integer">
+    select count(*) from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wp_users
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.edittime != null">
+        editTime = #{record.edittime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delflag != null">
+        delFlag = #{record.delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercode != null">
+        userCode = #{record.usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginname != null">
+        loginName = #{record.loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passcode != null">
+        passCode = #{record.passcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iseanble != null">
+        isEanble = #{record.iseanble,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wp_users
+    set id = #{record.id,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      editTime = #{record.edittime,jdbcType=VARCHAR},
+      delFlag = #{record.delflag,jdbcType=VARCHAR},
+      userCode = #{record.usercode,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      loginName = #{record.loginname,jdbcType=VARCHAR},
+      passCode = #{record.passcode,jdbcType=VARCHAR},
+      isEanble = #{record.iseanble,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wpkj.domain.WpUsers">
+    update wp_users
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="edittime != null">
+        editTime = #{edittime,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        delFlag = #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        userCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="passcode != null">
+        passCode = #{passcode,jdbcType=VARCHAR},
+      </if>
+      <if test="iseanble != null">
+        isEanble = #{iseanble,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wpkj.domain.WpUsers">
+    update wp_users
+    set userId = #{userid,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=VARCHAR},
+      delFlag = #{delflag,jdbcType=VARCHAR},
+      userCode = #{usercode,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      loginName = #{loginname,jdbcType=VARCHAR},
+      passCode = #{passcode,jdbcType=VARCHAR},
+      isEanble = #{iseanble,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.wpkj.domain.WpUsers" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <resultMap id="BaseResultMap" type="com.wpkj.domain.WpUsers">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="editTime" jdbcType="VARCHAR" property="edittime" />
+    <result column="delFlag" jdbcType="VARCHAR" property="delflag" />
+    <result column="userCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="passCode" jdbcType="VARCHAR" property="passcode" />
+    <result column="isEanble" jdbcType="VARCHAR" property="iseanble" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, userId, editTime, delFlag, userCode, userName, loginName, passCode, isEanble
+  </sql>
+  <select id="selectByExample" parameterType="com.wpkj.domain.WpUsers" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wp_users
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wp_users
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wpkj.domain.WpUsers">
+    delete from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wpkj.domain.WpUsers">
+    insert into wp_users (id, userId, editTime, 
+      delFlag, userCode, userName, 
+      loginName, passCode, isEanble
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{edittime,jdbcType=VARCHAR}, 
+      #{delflag,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{loginname,jdbcType=VARCHAR}, #{passcode,jdbcType=VARCHAR}, #{iseanble,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wpkj.domain.WpUsers">
+    insert into wp_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="edittime != null">
+        editTime,
+      </if>
+      <if test="delflag != null">
+        delFlag,
+      </if>
+      <if test="usercode != null">
+        userCode,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="loginname != null">
+        loginName,
+      </if>
+      <if test="passcode != null">
+        passCode,
+      </if>
+      <if test="iseanble != null">
+        isEanble,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="edittime != null">
+        #{edittime,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="passcode != null">
+        #{passcode,jdbcType=VARCHAR},
+      </if>
+      <if test="iseanble != null">
+        #{iseanble,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wpkj.domain.WpUsers" resultType="java.lang.Integer">
+    select count(*) from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wp_users
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.edittime != null">
+        editTime = #{record.edittime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delflag != null">
+        delFlag = #{record.delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercode != null">
+        userCode = #{record.usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginname != null">
+        loginName = #{record.loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passcode != null">
+        passCode = #{record.passcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iseanble != null">
+        isEanble = #{record.iseanble,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wp_users
+    set id = #{record.id,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      editTime = #{record.edittime,jdbcType=VARCHAR},
+      delFlag = #{record.delflag,jdbcType=VARCHAR},
+      userCode = #{record.usercode,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      loginName = #{record.loginname,jdbcType=VARCHAR},
+      passCode = #{record.passcode,jdbcType=VARCHAR},
+      isEanble = #{record.iseanble,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wpkj.domain.WpUsers">
+    update wp_users
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="edittime != null">
+        editTime = #{edittime,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        delFlag = #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        userCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="loginname != null">
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="passcode != null">
+        passCode = #{passcode,jdbcType=VARCHAR},
+      </if>
+      <if test="iseanble != null">
+        isEanble = #{iseanble,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wpkj.domain.WpUsers">
+    update wp_users
+    set userId = #{userid,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=VARCHAR},
+      delFlag = #{delflag,jdbcType=VARCHAR},
+      userCode = #{usercode,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      loginName = #{loginname,jdbcType=VARCHAR},
+      passCode = #{passcode,jdbcType=VARCHAR},
+      isEanble = #{iseanble,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.wpkj.domain.WpUsers" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wp_users
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

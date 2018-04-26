@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.boz.sell.base.mapper.SmsInvcullbMapper">
+	<!-- CommonResultMap -->
+	<resultMap id="Map" type="java.util.HashMap"></resultMap>
+	<resultMap id="LinkedHashMap" type="java.util.LinkedHashMap"></resultMap>
+	<!-- BaseResultMap -->
+	<resultMap id="BaseResultMap" type="com.boz.sell.base.domain.SmsInvcullb">
+		<result column="invcullid" property="invCullId" jdbcType="VARCHAR" />
+		<result column="id" property="id" jdbcType="VARCHAR" />
+		<result column="userid" property="userId" jdbcType="VARCHAR" />
+		<result column="edittime" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="delflag" property="delFlag" jdbcType="TINYINT" />
+		<result column="serial_no" property="serialNo" jdbcType="INTEGER" />
+		<result column="invgetaid" property="invGetAId" jdbcType="VARCHAR" />
+		<result column="invgetbid" property="invGetBId" jdbcType="VARCHAR" />
+		<result column="invgetno" property="invGetNo" jdbcType="VARCHAR" />
+		<result column="invbakaid" property="invBakAId" jdbcType="VARCHAR" />
+		<result column="invbakno" property="invBakNo" jdbcType="VARCHAR" />
+		<result column="invbakbid" property="invBakBId" jdbcType="VARCHAR" />
+		<result column="invgetitem" property="invGetItem" jdbcType="INTEGER" />
+		<result column="sorderaid" property="sorderAId" jdbcType="VARCHAR" />
+		<result column="sorderno" property="sorderNo" jdbcType="VARCHAR" />
+		<result column="sorderbid" property="sorderBId" jdbcType="VARCHAR" />
+		<result column="vendorid" property="vendorId" jdbcType="VARCHAR" />
+		<result column="goodsid" property="goodsId" jdbcType="VARCHAR" />
+		<result column="cusgoodsid" property="cusGoodsId" jdbcType="VARCHAR" />
+		<result column="packboxid" property="packBoxId" jdbcType="VARCHAR" />
+		<result column="featureid" property="featureId" jdbcType="VARCHAR" />
+		<result column="unitid" property="unitId" jdbcType="VARCHAR" />
+		<result column="unitrate" property="unitRate" jdbcType="NUMERIC" />
+		<result column="sd_bakquan" property="sdBakquan" jdbcType="NUMERIC" />
+		<result column="tr_bakquan" property="trBakquan" jdbcType="NUMERIC" />
+		<result column="packadj_if" property="packadjIf" jdbcType="TINYINT" />
+		<result column="xquan" property="xquan" jdbcType="NUMERIC" />
+		<result column="hquan" property="hquan" jdbcType="NUMERIC" />
+		<result column="sd_quan" property="sdQuan" jdbcType="NUMERIC" />
+		<result column="tr_quan" property="trQuan" jdbcType="NUMERIC" />
+		<result column="sd_weight" property="sdWeight" jdbcType="NUMERIC" />
+		<result column="tr_weight" property="trWeight" jdbcType="NUMERIC" />
+		<result column="netweight" property="netWeight" jdbcType="NUMERIC" />
+		<result column="odepotid" property="odepotId" jdbcType="VARCHAR" />
+		<result column="olocalid" property="olocalId" jdbcType="VARCHAR" />
+		<result column="idepotid" property="idepotId" jdbcType="VARCHAR" />
+		<result column="ilocalid" property="ilocalId" jdbcType="VARCHAR" />
+		<result column="batch_no" property="batchNo" jdbcType="VARCHAR" />
+		<result column="batch_date" property="batchDate" jdbcType="TIMESTAMP" javaType="java.sql.Date"/>
+		<result column="batch_note" property="batchNote" jdbcType="VARCHAR" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- Base_Column_List -->
+	<sql id="Base_Column_List">
+		invcullid
+		,id
+		,userid
+		,edittime
+		,delflag
+		,serial_no
+		,invgetaid
+		,invgetbid
+		,invgetno
+		,invbakaid
+		,invbakno
+		,invbakbid
+		,invgetitem
+		,sorderaid
+		,sorderno
+		,sorderbid
+		,vendorid
+		,goodsid
+		,cusgoodsid
+		,packboxid
+		,featureid
+		,unitid
+		,unitrate
+		,sd_bakquan
+		,tr_bakquan
+		,packadj_if
+		,packadj_if packadjIf1
+		,xquan
+		,hquan
+		,sd_quan
+		,tr_quan
+		,sd_weight
+		,tr_weight
+		,netweight
+		,odepotid
+		,olocalid
+		,idepotid
+		,ilocalid
+		,batch_no
+		,batch_date
+		,batch_note
+		,remarks
+	</sql>
+	<!-- Base_Where_Clause -->
+	<sql id="Base_Where_Clause">
+		<if test="invCullId != null and invCullId != ''">
+			and invCullId = #{invCullId,jdbcType=VARCHAR }
+		</if>
+		<if test="id != null and id != ''">
+			and id = #{id,jdbcType=VARCHAR }
+		</if>
+		<if test="userId != null and userId != ''">
+			and userId = #{userId,jdbcType=VARCHAR }
+		</if>
+		<if test="editTime != null and editTime != ''">
+			and editTime = #{editTime,jdbcType=TIMESTAMP }
+		</if>
+		<if test="delFlag != null and delFlag != ''">
+			and delFlag = #{delFlag,jdbcType=TINYINT }
+		</if>
+		<if test="serialNo != null and serialNo != ''">
+			and serial_no = #{serialNo,jdbcType=INTEGER }
+		</if>
+		<if test="invGetAId != null and invGetAId != ''">
+			and invGetAId = #{invGetAId,jdbcType=VARCHAR }
+		</if>
+		<if test="invGetBId != null and invGetBId != ''">
+			and invGetBId = #{invGetBId,jdbcType=VARCHAR }
+		</if>
+		<if test="invGetNo != null and invGetNo != ''">
+			and invGetNo = #{invGetNo,jdbcType=VARCHAR }
+		</if>
+		<if test="invBakAId != null and invBakAId != ''">
+			and invBakAId = #{invBakAId,jdbcType=VARCHAR }
+		</if>
+		<if test="invBakNo != null and invBakNo != ''">
+			and invBakNo = #{invBakNo,jdbcType=VARCHAR }
+		</if>
+		<if test="invBakBId != null and invBakBId != ''">
+			and invBakBId = #{invBakBId,jdbcType=VARCHAR }
+		</if>
+		<if test="invGetItem != null and invGetItem != ''">
+			and invGetItem = #{invGetItem,jdbcType=INTEGER }
+		</if>
+		<if test="sorderAId != null and sorderAId != ''">
+			and sorderAId = #{sorderAId,jdbcType=VARCHAR }
+		</if>
+		<if test="sorderNo != null and sorderNo != ''">
+			and sorderNo = #{sorderNo,jdbcType=VARCHAR }
+		</if>
+		<if test="sorderBId != null and sorderBId != ''">
+			and sorderBId = #{sorderBId,jdbcType=VARCHAR }
+		</if>
+		<if test="vendorId != null and vendorId != ''">
+			and vendorId = #{vendorId,jdbcType=VARCHAR }
+		</if>
+		<if test="goodsId != null and goodsId != ''">
+			and goodsId = #{goodsId,jdbcType=VARCHAR }
+		</if>
+		<if test="cusGoodsId != null and cusGoodsId != ''">
+			and cusGoodsId = #{cusGoodsId,jdbcType=VARCHAR }
+		</if>
+		<if test="packBoxId != null and packBoxId != ''">
+			and packBoxId = #{packBoxId,jdbcType=VARCHAR }
+		</if>
+		<if test="featureId != null and featureId != ''">
+			and featureId = #{featureId,jdbcType=VARCHAR }
+		</if>
+		<if test="unitId != null and unitId != ''">
+			and unitId = #{unitId,jdbcType=VARCHAR }
+		</if>
+		<if test="unitRate != null and unitRate != ''">
+			and unitRate = #{unitRate,jdbcType=NUMERIC }
+		</if>
+		<if test="sdBakquan != null and sdBakquan != ''">
+			and sd_bakQuan = #{sdBakquan,jdbcType=NUMERIC }
+		</if>
+		<if test="trBakquan != null and trBakquan != ''">
+			and tr_bakQuan = #{trBakquan,jdbcType=NUMERIC }
+		</if>
+		<if test="packadjIf != null and packadjIf != ''">
+			and packAdj_if = #{packadjIf,jdbcType=TINYINT }
+		</if>
+		<if test="xquan != null and xquan != ''">
+			and xQuan = #{xquan,jdbcType=NUMERIC }
+		</if>
+		<if test="hquan != null and hquan != ''">
+			and hQuan = #{hquan,jdbcType=NUMERIC }
+		</if>
+		<if test="sdQuan != null and sdQuan != ''">
+			and sd_quan = #{sdQuan,jdbcType=NUMERIC }
+		</if>
+		<if test="trQuan != null and trQuan != ''">
+			and tr_quan = #{trQuan,jdbcType=NUMERIC }
+		</if>
+		<if test="sdWeight != null and sdWeight != ''">
+			and sd_weight = #{sdWeight,jdbcType=NUMERIC }
+		</if>
+		<if test="trWeight != null and trWeight != ''">
+			and tr_weight = #{trWeight,jdbcType=NUMERIC }
+		</if>
+		<if test="netWeight != null and netWeight != ''">
+			and netWeight = #{netWeight,jdbcType=NUMERIC }
+		</if>
+		<if test="odepotId != null and odepotId != ''">
+			and oDepotId = #{odepotId,jdbcType=VARCHAR }
+		</if>
+		<if test="olocalId != null and olocalId != ''">
+			and oLocalId = #{olocalId,jdbcType=VARCHAR }
+		</if>
+		<if test="idepotId != null and idepotId != ''">
+			and iDepotId = #{idepotId,jdbcType=VARCHAR }
+		</if>
+		<if test="ilocalId != null and ilocalId != ''">
+			and iLocalId = #{ilocalId,jdbcType=VARCHAR }
+		</if>
+		<if test="batchNo != null and batchNo != ''">
+			and batch_no = #{batchNo,jdbcType=VARCHAR }
+		</if>
+		<if test="batchDate != null and batchDate != ''">
+			and batch_date = #{batchDate,jdbcType=TIMESTAMP }
+		</if>
+		<if test="batchNote != null and batchNote != ''">
+			and batch_note = #{batchNote,jdbcType=VARCHAR }
+		</if>
+		<if test="remarks != null and remarks != ''">
+			and remarks = #{remarks,jdbcType=VARCHAR }
+		</if>
+	</sql>
+	<sql id="Base_Column_List1">
+		 A.invcullid
+		,A.id
+		,A.userid
+		,A.edittime
+		,A.delflag
+		,A.serial_no
+		,A.invgetaid
+		,A.invgetbid
+		,A.invgetno
+		,A.invbakaid
+		,A.invbakno
+		,A.invbakbid
+		,A.invgetitem
+		,A.sorderaid
+		,A.sorderno
+		,A.sorderbid
+		,A.vendorid
+		,A.goodsid
+		,A.cusgoodsid
+		,A.packboxid
+		,A.featureid
+		,A.unitid
+		,A.unitrate
+		,A.sd_bakquan
+		,A.tr_bakquan
+		,A.packadj_if
+		,A.xquan
+		,A.hquan
+		,A.sd_quan
+		,A.tr_quan
+		,A.sd_weight
+		,A.tr_weight
+		,A.netweight
+		,A.odepotid
+		,A.olocalid
+		,A.idepotid
+		,A.ilocalid
+		,A.batch_no
+		,A.batch_date
+		,A.batch_note
+		,A.remarks
+		,C.code vendorCode,C.name vendorName
+		,cus.code cusgoodsCode,cus.name cusgoodsName
+		,gp.code,gp.name,gp.inv_spec invSpec,gp.engl_nam englNam,gp.wunit
+		,E.featcode featCode
+		,F.unitcode unitCode
+		,gpb.code packBoxCode,gpb.name packBoxName,gpb.sup_quan supQuan,gpb.box_quan boxQuan,gpb.quanX
+		,sb.tr_Quan sorderQuan
+		,dd.code odepotCode,dd.name odepotName
+		,ee.code olocalCode,ee.name olocalName
+		,ddd.code idepotCode,ddd.name idepotName
+		,eee.code ilocalCode,eee.name ilocalName
+		,isnull(bb.sd_toQuan,0)/isnull(A.unitrate,1) sdtoQuan
+		,isnull(bb.sd_alQuan,0)/isnull(A.unitrate,1) sdalQuan
+	</sql>
+	<!-- Base_Where_Clause1 -->
+	<sql id="Base_Where_Clause1">
+		<if test="invCullId != null and invCullId != ''">
+			and A.invCullId = #{invCullId,jdbcType=VARCHAR }
+		</if>
+		<if test="id != null and id != ''">
+			and A.id = #{id,jdbcType=VARCHAR }
+		</if>
+	<!-- 	<if test="userId != null and userId != ''">
+			and userId = #{userId,jdbcType=VARCHAR }
+		</if> -->
+		<if test="editTime != null and editTime != ''">
+			and A.editTime = #{editTime,jdbcType=TIMESTAMP }
+		</if>
+		<if test="delFlag != null and delFlag != ''">
+			and A.delFlag = #{delFlag,jdbcType=TINYINT }
+		</if>
+		<if test="serialNo != null and serialNo != ''">
+			and A.serial_no = #{serialNo,jdbcType=INTEGER }
+		</if>
+		<if test="invGetAId != null and invGetAId != ''">
+			and A.invGetAId = #{invGetAId,jdbcType=VARCHAR }
+		</if>
+		<if test="invGetBId != null and invGetBId != ''">
+			and A.invGetBId = #{invGetBId,jdbcType=VARCHAR }
+		</if>
+		<if test="invGetNo != null and invGetNo != ''">
+			and A.invGetNo = #{invGetNo,jdbcType=VARCHAR }
+		</if>
+		<if test="invBakAId != null and invBakAId != ''">
+			and A.invBakAId = #{invBakAId,jdbcType=VARCHAR }
+		</if>
+		<if test="invBakNo != null and invBakNo != ''">
+			and A.invBakNo = #{invBakNo,jdbcType=VARCHAR }
+		</if>
+		<if test="invBakBId != null and invBakBId != ''">
+			and A.invBakBId = #{invBakBId,jdbcType=VARCHAR }
+		</if>
+		<if test="invGetItem != null and invGetItem != ''">
+			and A.invGetItem = #{invGetItem,jdbcType=INTEGER }
+		</if>
+		<if test="sorderAId != null and sorderAId != ''">
+			and A.sorderAId = #{sorderAId,jdbcType=VARCHAR }
+		</if>
+		<if test="sorderNo != null and sorderNo != ''">
+			and A.sorderNo = #{sorderNo,jdbcType=VARCHAR }
+		</if>
+		<if test="sorderBId != null and sorderBId != ''">
+			and A.sorderBId = #{sorderBId,jdbcType=VARCHAR }
+		</if>
+		<if test="vendorId != null and vendorId != ''">
+			and A.vendorId = #{vendorId,jdbcType=VARCHAR }
+		</if>
+		<if test="goodsId != null and goodsId != ''">
+			and A.goodsId = #{goodsId,jdbcType=VARCHAR }
+		</if>
+		<if test="cusGoodsId != null and cusGoodsId != ''">
+			and A.cusGoodsId = #{cusGoodsId,jdbcType=VARCHAR }
+		</if>
+		<if test="packBoxId != null and packBoxId != ''">
+			and A.packBoxId = #{packBoxId,jdbcType=VARCHAR }
+		</if>
+		<if test="featureId != null and featureId != ''">
+			and A.featureId = #{featureId,jdbcType=VARCHAR }
+		</if>
+		<if test="unitId != null and unitId != ''">
+			and A.unitId = #{unitId,jdbcType=VARCHAR }
+		</if>
+		<if test="unitRate != null and unitRate != ''">
+			and A.unitRate = #{unitRate,jdbcType=NUMERIC }
+		</if>
+		<if test="sdBakquan != null and sdBakquan != ''">
+			and A.sd_bakQuan = #{sdBakquan,jdbcType=NUMERIC }
+		</if>
+		<if test="trBakquan != null and trBakquan != ''">
+			and A.tr_bakQuan = #{trBakquan,jdbcType=NUMERIC }
+		</if>
+		<if test="packadjIf != null and packadjIf != ''">
+			and A.packAdj_if = #{packadjIf,jdbcType=TINYINT }
+		</if>
+		<if test="xquan != null and xquan != ''">
+			and A.xQuan = #{xquan,jdbcType=NUMERIC }
+		</if>
+		<if test="hquan != null and hquan != ''">
+			and A.hQuan = #{hquan,jdbcType=NUMERIC }
+		</if>
+		<if test="sdQuan != null and sdQuan != ''">
+			and A.sd_quan = #{sdQuan,jdbcType=NUMERIC }
+		</if>
+		<if test="trQuan != null and trQuan != ''">
+			and A.tr_quan = #{trQuan,jdbcType=NUMERIC }
+		</if>
+		<if test="sdWeight != null and sdWeight != ''">
+			and A.sd_weight = #{sdWeight,jdbcType=NUMERIC }
+		</if>
+		<if test="trWeight != null and trWeight != ''">
+			and A.tr_weight = #{trWeight,jdbcType=NUMERIC }
+		</if>
+		<if test="netWeight != null and netWeight != ''">
+			and A.netWeight = #{netWeight,jdbcType=NUMERIC }
+		</if>
+		<if test="odepotId != null and odepotId != ''">
+			and A.oDepotId = #{odepotId,jdbcType=VARCHAR }
+		</if>
+		<if test="olocalId != null and olocalId != ''">
+			and A.oLocalId = #{olocalId,jdbcType=VARCHAR }
+		</if>
+		<if test="idepotId != null and idepotId != ''">
+			and A.iDepotId = #{idepotId,jdbcType=VARCHAR }
+		</if>
+		<if test="ilocalId != null and ilocalId != ''">
+			and A.iLocalId = #{ilocalId,jdbcType=VARCHAR }
+		</if>
+		<if test="batchNo != null and batchNo != ''">
+			and A.batch_no = #{batchNo,jdbcType=VARCHAR }
+		</if>
+		<if test="batchDate != null and batchDate != ''">
+			and A.batch_date = #{batchDate,jdbcType=TIMESTAMP }
+		</if>
+		<if test="batchNote != null and batchNote != ''">
+			and A.batch_note = #{batchNote,jdbcType=VARCHAR }
+		</if>
+		<if test="remarks != null and remarks != ''">
+			and A.remarks = #{remarks,jdbcType=VARCHAR }
+		</if>
+	</sql>
+	<!-- selectByCondition -->
+	<select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		select
+		<include refid="Base_Column_List1" />
+		from SMS_invCullB A
+		left join @{pro}.cus_vendor C ON A.vendorId=C.id
+		left join @{pro}.GOO_CUSGCODB cus on A.cusgoodsid=cus.id<!-- 对方货品 -->
+		left join @{pro}.goo_product gp on gp.id=A.goodsId
+		left join @{pro}.GOO_PACKBOX gpb on gpb.id=A.packBoxId
+		left join @{pro}.GOO_FEATURE_CODE E on A.featureid=E.id
+		left join @{pro}.GOO_UNIT F on A.unitId=F.id
+		left join SMS_sorderB sb on sb.id=A.sorderBId <!-- 销售单 -->
+		
+		left join @{pro}.GOO_DEPOT dd ON A.oDepotId=dd.id
+		left join @{pro}.GOO_DEPOT_LOCAL ee on A.oLocalId=ee.id
+		left join @{pro}.GOO_DEPOT ddd ON A.iDepotId=ddd.id
+		left join @{pro}.GOO_DEPOT_LOCAL eee on A.iLocalId=eee.id
+		
+		left join SMS_invCullB_Bak bb on bb.invCullBId=A.id
+		<where>
+			<if test="_parameter != null">
+			      <include refid="Base_Where_Clause1" />
+			</if>
+		</where> 
+		order by A.serial_no 
+	</select>
+	<!-- selectByPrimaryKey -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from SMS_invCullB
+		where
+		id = #{id,jdbcType=VARCHAR }
+	</select>
+	<!-- selectByPrimaryKeys -->
+	<select id="select" resultMap="BaseResultMap" parameterType="List">
+		select
+		<include refid="Base_Column_List" />
+		from SMS_invCullB
+		<where>
+			id 
+			 in
+			<foreach collection="list" item="ids" open="(" separator="," close=")">
+				#{ids} 
+	         </foreach>
+		</where>
+	</select>
+	<!-- deleteBySelective -->
+	<delete id="deleteBySelective" parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		delete from SMS_invCullB 
+		<where>
+			<if test="_parameter != null">
+			      <include refid="Base_Where_Clause" />
+			</if>
+		</where> 
+	</delete>
+	<!-- deleteByKeyList -->
+	<delete id="deleteByKeyList" parameterType="List">
+		delete from SMS_invCullB 
+		<where>
+			id
+			 in
+			<foreach collection="list" item="ids" open="(" separator="," close=")">
+				#{ids} 
+	         </foreach>
+         </where>
+	</delete>
+	
+	<!-- insertSelective -->
+	<insert id="insertBySelective" parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		insert into SMS_invCullB
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="invCullId != null">invCullId,</if>
+			<if test="id != null">id,</if>
+			<if test="userId != null">userId,</if>
+			<if test="editTime != null">editTime,</if>
+			<if test="delFlag != null">delFlag,</if>
+			<if test="serialNo != null">serial_no,</if>
+			<if test="invGetAId != null">invGetAId,</if>
+			<if test="invGetBId != null">invGetBId,</if>
+			<if test="invGetNo != null">invGetNo,</if>
+			<if test="invBakAId != null">invBakAId,</if>
+			<if test="invBakNo != null">invBakNo,</if>
+			<if test="invBakBId != null">invBakBId,</if>
+			<if test="invGetItem != null">invGetItem,</if>
+			<if test="sorderAId != null">sorderAId,</if>
+			<if test="sorderNo != null">sorderNo,</if>
+			<if test="sorderBId != null">sorderBId,</if>
+			<if test="vendorId != null">vendorId,</if>
+			<if test="goodsId != null">goodsId,</if>
+			<if test="cusGoodsId != null">cusGoodsId,</if>
+			<if test="packBoxId != null">packBoxId,</if>
+			<if test="featureId != null">featureId,</if>
+			<if test="unitId != null">unitId,</if>
+			<if test="unitRate != null">unitRate,</if>
+			<if test="sdBakquan != null">sd_bakQuan,</if>
+			<if test="trBakquan != null">tr_bakQuan,</if>
+			<if test="packadjIf != null">packAdj_if,</if>
+			<if test="xquan != null">xQuan,</if>
+			<if test="hquan != null">hQuan,</if>
+			<if test="sdQuan != null">sd_quan,</if>
+			<if test="trQuan != null">tr_quan,</if>
+			<if test="sdWeight != null">sd_weight,</if>
+			<if test="trWeight != null">tr_weight,</if>
+			<if test="netWeight != null">netWeight,</if>
+			<if test="odepotId != null">oDepotId,</if>
+			<if test="olocalId != null">oLocalId,</if>
+			<if test="idepotId != null">iDepotId,</if>
+			<if test="ilocalId != null">iLocalId,</if>
+			<if test="batchNo != null">batch_no,</if>
+			<if test="batchDate != null">batch_date,</if>
+			<if test="batchNote != null">batch_note,</if>
+			<if test="remarks != null">remarks,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="invCullId != null">#{invCullId,jdbcType=VARCHAR},</if>
+			<if test="id != null">#{id,jdbcType=VARCHAR},</if>
+			<if test="userId != null">#{userId,jdbcType=VARCHAR},</if>
+			<if test="editTime != null">#{editTime,jdbcType=TIMESTAMP},</if>
+			<if test="delFlag != null">#{delFlag,jdbcType=TINYINT},</if>
+			<if test="serialNo != null">#{serialNo,jdbcType=INTEGER},</if>
+			<if test="invGetAId != null">#{invGetAId,jdbcType=VARCHAR},</if>
+			<if test="invGetBId != null">#{invGetBId,jdbcType=VARCHAR},</if>
+			<if test="invGetNo != null">#{invGetNo,jdbcType=VARCHAR},</if>
+			<if test="invBakAId != null">#{invBakAId,jdbcType=VARCHAR},</if>
+			<if test="invBakNo != null">#{invBakNo,jdbcType=VARCHAR},</if>
+			<if test="invBakBId != null">#{invBakBId,jdbcType=VARCHAR},</if>
+			<if test="invGetItem != null">#{invGetItem,jdbcType=INTEGER},</if>
+			<if test="sorderAId != null">#{sorderAId,jdbcType=VARCHAR},</if>
+			<if test="sorderNo != null">#{sorderNo,jdbcType=VARCHAR},</if>
+			<if test="sorderBId != null">#{sorderBId,jdbcType=VARCHAR},</if>
+			<if test="vendorId != null">#{vendorId,jdbcType=VARCHAR},</if>
+			<if test="goodsId != null">#{goodsId,jdbcType=VARCHAR},</if>
+			<if test="cusGoodsId != null">#{cusGoodsId,jdbcType=VARCHAR},</if>
+			<if test="packBoxId != null">#{packBoxId,jdbcType=VARCHAR},</if>
+			<if test="featureId != null">#{featureId,jdbcType=VARCHAR},</if>
+			<if test="unitId != null">#{unitId,jdbcType=VARCHAR},</if>
+			<if test="unitRate != null">#{unitRate,jdbcType=NUMERIC},</if>
+			<if test="sdBakquan != null">#{sdBakquan,jdbcType=NUMERIC},</if>
+			<if test="trBakquan != null">#{trBakquan,jdbcType=NUMERIC},</if>
+			<if test="packadjIf != null">#{packadjIf,jdbcType=TINYINT},</if>
+			<if test="xquan != null">#{xquan,jdbcType=NUMERIC},</if>
+			<if test="hquan != null">#{hquan,jdbcType=NUMERIC},</if>
+			<if test="sdQuan != null">#{sdQuan,jdbcType=NUMERIC},</if>
+			<if test="trQuan != null">#{trQuan,jdbcType=NUMERIC},</if>
+			<if test="sdWeight != null">#{sdWeight,jdbcType=NUMERIC},</if>
+			<if test="trWeight != null">#{trWeight,jdbcType=NUMERIC},</if>
+			<if test="netWeight != null">#{netWeight,jdbcType=NUMERIC},</if>
+			<if test="odepotId != null">#{odepotId,jdbcType=VARCHAR},</if>
+			<if test="olocalId != null">#{olocalId,jdbcType=VARCHAR},</if>
+			<if test="idepotId != null">#{idepotId,jdbcType=VARCHAR},</if>
+			<if test="ilocalId != null">#{ilocalId,jdbcType=VARCHAR},</if>
+			<if test="batchNo != null">#{batchNo,jdbcType=VARCHAR},</if>
+			<if test="batchDate != null">#{batchDate,jdbcType=TIMESTAMP,javaType=java.sql.Date},</if>
+			<if test="batchNote != null">#{batchNote,jdbcType=VARCHAR},</if>
+			<if test="remarks != null">#{remarks,jdbcType=VARCHAR},</if>
+		</trim>
+	</insert>
+	<!-- updateByPrimaryKeySelective -->
+	<update id="updateBySelective" parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		update SMS_invCullB
+		<set>
+			<if test="invCullId != null">invCullId = #{invCullId,jdbcType=VARCHAR},</if>
+			<if test="id != null">id = #{id,jdbcType=VARCHAR},</if>
+			<if test="userId != null">userId = #{userId,jdbcType=VARCHAR},</if>
+			<if test="editTime != null">editTime = #{editTime,jdbcType=TIMESTAMP},</if>
+			<if test="delFlag != null">delFlag = #{delFlag,jdbcType=TINYINT},</if>
+			<if test="serialNo != null">serial_no = #{serialNo,jdbcType=INTEGER},</if>
+			<if test="invGetAId != null">invGetAId = #{invGetAId,jdbcType=VARCHAR},</if>
+			<if test="invGetBId != null">invGetBId = #{invGetBId,jdbcType=VARCHAR},</if>
+			<if test="invGetNo != null">invGetNo = #{invGetNo,jdbcType=VARCHAR},</if>
+			<if test="invBakAId != null">invBakAId = #{invBakAId,jdbcType=VARCHAR},</if>
+			<if test="invBakNo != null">invBakNo = #{invBakNo,jdbcType=VARCHAR},</if>
+			<if test="invBakBId != null">invBakBId = #{invBakBId,jdbcType=VARCHAR},</if>
+			<if test="invGetItem != null">invGetItem = #{invGetItem,jdbcType=INTEGER},</if>
+			<if test="sorderAId != null">sorderAId = #{sorderAId,jdbcType=VARCHAR},</if>
+			<if test="sorderNo != null">sorderNo = #{sorderNo,jdbcType=VARCHAR},</if>
+			<if test="sorderBId != null">sorderBId = #{sorderBId,jdbcType=VARCHAR},</if>
+			<if test="vendorId != null">vendorId = #{vendorId,jdbcType=VARCHAR},</if>
+			<if test="goodsId != null">goodsId = #{goodsId,jdbcType=VARCHAR},</if>
+			<if test="cusGoodsId != null">cusGoodsId = #{cusGoodsId,jdbcType=VARCHAR},</if>
+			<if test="packBoxId != null">packBoxId = #{packBoxId,jdbcType=VARCHAR},</if>
+			<if test="featureId != null">featureId = #{featureId,jdbcType=VARCHAR},</if>
+			<if test="unitId != null">unitId = #{unitId,jdbcType=VARCHAR},</if>
+			<if test="unitRate != null">unitRate = #{unitRate,jdbcType=NUMERIC},</if>
+			<if test="sdBakquan != null">sd_bakQuan = #{sdBakquan,jdbcType=NUMERIC},</if>
+			<if test="trBakquan != null">tr_bakQuan = #{trBakquan,jdbcType=NUMERIC},</if>
+			<if test="packadjIf != null">packAdj_if = #{packadjIf,jdbcType=TINYINT},</if>
+			<if test="xquan != null">xQuan = #{xquan,jdbcType=NUMERIC},</if>
+			<if test="hquan != null">hQuan = #{hquan,jdbcType=NUMERIC},</if>
+			<if test="sdQuan != null">sd_quan = #{sdQuan,jdbcType=NUMERIC},</if>
+			<if test="trQuan != null">tr_quan = #{trQuan,jdbcType=NUMERIC},</if>
+			<if test="sdWeight != null">sd_weight = #{sdWeight,jdbcType=NUMERIC},</if>
+			<if test="trWeight != null">tr_weight = #{trWeight,jdbcType=NUMERIC},</if>
+			<if test="netWeight != null">netWeight = #{netWeight,jdbcType=NUMERIC},</if>
+			<if test="odepotId != null">oDepotId = #{odepotId,jdbcType=VARCHAR},</if>
+			<if test="olocalId != null">oLocalId = #{olocalId,jdbcType=VARCHAR},</if>
+			<if test="idepotId != null">iDepotId = #{idepotId,jdbcType=VARCHAR},</if>
+			<if test="ilocalId != null">iLocalId = #{ilocalId,jdbcType=VARCHAR},</if>
+			<if test="batchNo != null">batch_no = #{batchNo,jdbcType=VARCHAR},</if>
+			<if test="batchDate != null">batch_date = #{batchDate,jdbcType=TIMESTAMP,javaType=java.sql.Date},</if>
+			<if test="batchNote != null">batch_note = #{batchNote,jdbcType=VARCHAR},</if>
+			<if test="remarks != null">remarks = #{remarks,jdbcType=VARCHAR},</if>
+		</set>
+		where
+		id = #{id,jdbcType=VARCHAR }
+	</update>
+	
+	<!-- existValidate -->
+	<select id="existValidate" resultMap="BaseResultMap"
+		parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		select
+		<include refid="Base_Column_List" />
+		from SMS_invCullB 
+		<where> 
+			<if test="params != null">
+				${params.name} = #{params.value,jdbcType=VARCHAR}
+			</if>
+			<if test="id != null">
+				AND id <![CDATA[ NOT IN ( #{id,jdbcType=VARCHAR} ) ]]> 
+			</if>
+		</where>
+	</select>
+	<!-- 获取最大序号 -->
+	<select id="getMaxSerno" resultType="java.lang.Integer" parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		SELECT ISNULL(MAX(serial_no),0) from SMS_invCullB
+		where invCullId = #{invCullId,jdbcType=VARCHAR}
+	</select>
+	<select id="invcullbSeekPage" resultMap="BaseResultMap" parameterType="com.boz.sell.base.domain.SmsInvcullb">
+		select
+		 A.invcullid
+		,A.id
+		,A.userid
+		,A.edittime
+		,A.delflag
+		,A.serial_no
+		,A.invgetaid
+		,A.invgetbid
+		,A.invgetno
+		,A.invbakaid
+		,A.invbakno
+		,A.invbakbid
+		,A.invgetitem
+		,A.sorderaid
+		,A.sorderno
+		,A.sorderbid
+		,A.vendorid
+		,A.goodsid
+		,A.cusgoodsid
+		,A.packboxid
+		,A.featureid
+		,A.unitid
+		,A.unitrate
+		,A.sd_bakquan
+		,A.tr_bakquan
+		,A.packadj_if
+		,A.xquan
+		,A.hquan
+		,A.sd_quan
+		,A.tr_quan
+		,A.sd_weight
+		,A.tr_weight
+		,A.netweight
+		,A.odepotid
+		,A.olocalid
+		,A.idepotid
+		,A.ilocalid
+		,A.batch_no
+		,A.batch_date
+		,A.batch_note
+		,A.remarks
+		,C.code vendorCode,C.name vendorName
+		,cus.code cusgoodsCode,cus.name cusgoodsName
+		,gp.code,gp.name,gp.inv_spec invSpec,gp.engl_nam englNam,gp.wunit
+		,E.featcode featCode
+		,F.unitcode unitCode
+		,gpb.code packBoxCode,gpb.name packBoxName,gpb.sup_quan supQuan,gpb.box_quan boxQuan,gpb.quanX
+		,isNull(gpb.volume,0) volume
+		,sb.tr_Quan sorderQuan
+		,A.tr_bakQuan invBakQuan
+		,sb.SERIAL_NO sorderItem
+		,AA.editTime editTime1
+		,AA.bill_no as billNo
+		,AA.categoryid +'_'+isNull(AA.category,'') as docCategory
+		,isNull(A.sd_quan,0)-isNull(bak.sd_toQuan,0)-isNull(bak.sd_alQuan,0) dosdQuan
+		,isNull(isNull(A.sd_quan,0)-isNull(bak.sd_toQuan,0)-isNull(bak.sd_alQuan,0),0)/isNull(A.unitrate,1) dotrQuan
+		,dd.code odepotCode,dd.name odepotName
+		,ee.code olocalCode,ee.name olocalName
+		,ddd.code idepotCode,ddd.name idepotName
+		,eee.code ilocalCode,eee.name ilocalName
+		,sordA.taxType,sordA.rate,sordB.unitPrice,fc.id curryId,fc.code curryCode,fc.Name curryName
+		from SMS_invCullB A
+		left join SMS_invCullA AA on AA.id=A.invCullId
+		left join @{pro}.cus_vendor C ON A.vendorId=C.id
+		left join @{pro}.GOO_CUSGCODB cus on A.cusgoodsid=cus.id<!-- 对方货品 -->
+		left join @{pro}.goo_product gp on gp.id=A.goodsId
+		left join @{pro}.GOO_PACKBOX gpb on gpb.id=A.packBoxId
+		left join @{pro}.GOO_FEATURE_CODE E on A.featureid=E.id
+		left join @{pro}.GOO_UNIT F on A.unitId=F.id
+		left join SMS_sorderB sb on sb.id=A.sorderBId <!-- 销售单 -->
+		left join SMS_invCullB_bak bak on A.id=bak.invCullBId
+		
+		left join @{pro}.GOO_DEPOT dd ON A.oDepotId=dd.id
+		left join @{pro}.GOO_DEPOT_LOCAL ee on A.oLocalId=ee.id
+		left join @{pro}.GOO_DEPOT ddd ON A.iDepotId=ddd.id
+		left join @{pro}.GOO_DEPOT_LOCAL eee on A.iLocalId=eee.id
+		
+		left join SMS_SORDERA sordA on A.sorderaid=sordA.id
+		left join SMS_SORDERB sordB on A.sorderbid=sordB.id
+		left join @{pro}.fin_curryratea fc on fc.id=sordA.CURRENCYID
+		
+		
+		<where>
+			<if test="_parameter != null">
+			      <include refid="Base_Where_Clause1" />
+			</if>
+			<!-- 拣货单选取货单 -->
+			<if test="sqlType != null and sqlType == 1">
+				and AA.state = '2'
+				and isNull(A.sd_quan,0)-isNull(bak.sd_toQuan,0)-isNull(bak.sd_alQuan,0)>0
+			</if>
+			<if test="code != null and code != ''">
+				and gp.code = #{code,jdbcType=VARCHAR }
+			</if>
+			<!-- 数据条件权限 -->
+			<if test="authOrgan != null and authOrgan != ''">
+				and AA.organId in <![CDATA[(]]>${authOrgan}<![CDATA[)]]>
+			</if>
+			<trim prefix="and (" prefixOverrides="and |or" suffix=")">
+				<if test="userId != null and userId != ''">
+					or AA.userId in <![CDATA[(]]>${userId}<![CDATA[)]]>
+				</if>
+				<if test="authOrgan != null and authOrgan != ''">
+					or AA.deptId in <![CDATA[(]]>${authOrgan}<![CDATA[)]]>
+				</if>
+			</trim>
+		</where> 
+		order by editTime1 desc,serial_no asc
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop.xsd   
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+    <!-- controller拦截器拦截所有请求 -->
+    <!-- 定义在mvc:interceptors-->
+    
+    <!-- 如果两个拦截器，会根据顺序先执行第一个的preHandle，然后第二个preHandle，然后执行controller,然后执行第二个postHandle,afterCompletion最后执行第一个postHandle,afterCompletion -->
+	<mvc:interceptors>  
+		<mvc:interceptor>  
+	        <mvc:mapping path="/**"/>  
+	        <bean class="com.wpkj.interceptor.CommonInterceptor">  
+	            <property name="debug" value="true"/>
+	        </bean>  
+	    </mvc:interceptor>  
+	    <mvc:interceptor>  
+	        <mvc:mapping path="/**"/>  
+	        <bean class="com.wpkj.interceptor.CommonInterceptor1">  
+	            <property name="debug" value="true"/>
+	        </bean>  
+	    </mvc:interceptor>
+	    <!-- <mvc:interceptor>  
+	        <mvc:mapping path="/**"/>  
+	        <bean class="com.hz.bdp.base.web.interceptor.WebUserInterceptor">  
+	            <property name="ignores" value="/download.do"/>  
+	        </bean>  
+	    </mvc:interceptor> --> 
+	</mvc:interceptors>  
+	<!-- <bean id="userInterceptor" class="com.wpkj.interceptor.UserInterceptor">
+        <property name="userName" value="user-module"></property>
+	</bean>
+	<aop:config>
+	    <aop:advisor advice-ref="userInterceptor" pointcut="execution(* com.wpkj.service.*.*(..))" />
+	</aop:config> -->
+    
+</beans>
